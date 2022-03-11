@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
 import Category from "./components/Category";
-import AddTask from "./components/AddTask";
 import React, {useState} from "react";
 import AddItems from "./components/AddItems";
 
@@ -29,11 +27,20 @@ function App() {
     })
   }
 
+  const deleteCategoryHandler = (name) => {
+    console.log(name);
+    for(var i = 0; i < categories.length; i++){
+      if(categories[i].name === name){
+        delete categories[i];
+      }
+    }
+  }
+
+
   const [tasks, setTasks] = useState(dummyTasks);
 
   const addTaskHandler = task => {
     setTasks(prevTasks => {
-      console.log(task);
       return [task, ...prevTasks];
     })
   }
@@ -42,7 +49,7 @@ function App() {
     <div className="App">
       <AddItems categories={categories} onAddTask={addTaskHandler} onAddCategory={addCategoryHandler}/>
       {categories.map(category =>
-        <Category key={category.id} title={category.name} tasks={tasks}/>
+        <Category key={category.id} name={category.name} tasks={tasks} onCategoryDelete={deleteCategoryHandler}/>
       )}
     </div>
   );

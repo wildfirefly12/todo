@@ -42,7 +42,7 @@ const AddTask = (props) => {
                 <select className={"field"} onChange={categoryChangeHandler}>
                     <option>Select Category</option>
                     {props.categories.map(category =>
-                        <option key={category.id} value={enteredCategory}>{category.name}</option>
+                        <option key={category.id} value={category.name}>{category.name}</option>
                     )}
                 </select>
                 <button className={"taskButton"} type={"submit"} >Add</button>

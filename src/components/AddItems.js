@@ -22,12 +22,17 @@ const AddItems = (props) => {
                         <button className={"button"} onClick={handleState} value={"Add Task"}>Add Task</button>
                     </div>
                 );
-                break;
             case "Add Category":
                 return <AddCategory onAddCategory={props.onAddCategory} handleState={handleState}/>;
-                break;
             case "Add Task":
                 return <AddTask onAddTask={props.onAddTask} categories={props.categories} handleState={handleState}/>;
+            default:
+               return (
+                   <div>
+                       <button className={"button"} onClick={handleState} value={"Add Category"}>Add Category</button>
+                       <button className={"button"} onClick={handleState} value={"Add Task"}>Add Task</button>
+                   </div>
+               );
         }
     }
 

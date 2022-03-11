@@ -1,12 +1,14 @@
 import React from "react";
 
-const Task = () => {
+import "./Task.css";
+
+const Task = (props) => {
 
 
     return (
-        <div>
-            <h3>props.title</h3>
-            <p>props.description</p>
+        <div className={"task"}>
+            <h3>{props.title}</h3>
+            <p>{props.description}</p>
         </div>
     )
 }

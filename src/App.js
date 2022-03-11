@@ -1,9 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import Category from "./Category";
+import AddTask from "./AddTask";
 
 function App() {
-  var categories = ["Home", "School", "Work"]
+  var categories = [
+    {id: 1, name: "Home"},
+    {id: 2, name: "Work"},
+    {id: 3, name: "School"},
+  ]
 
   var tasks = [
     {
@@ -17,8 +22,9 @@ function App() {
 
   return (
     <div className="App">
+      <AddTask/>
       {categories.map(category =>
-        <Category title={category} />
+        <Category key={category.id} title={category.name} tasks={tasks}/>
       )}
     </div>
   );

@@ -1,23 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import Category from "./Category";
 
 function App() {
+  var categories = ["Home", "School", "Work"]
+
+  var tasks = [
+    {
+      id: 1,
+      category: "School",
+      title: "Homework",
+      description: "Time to study"
+    }
+  ]
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {categories.map(category =>
+        <Category title={category} />
+      )}
     </div>
   );
 }

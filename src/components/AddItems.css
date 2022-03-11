@@ -1,0 +1,14 @@
+.button{
+    display: inline-block;
+    height: 50px;
+    width: 25%;
+    border-radius: 5px;
+    font-size: 1.6em;
+    margin: 15px;
+    background-color: #edb5bf;
+    color: whitesmoke;
+    font-family: Roboto;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}

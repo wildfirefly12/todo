@@ -1,0 +1,19 @@
+.category{
+    border: whitesmoke solid 3px;
+    border-radius: 25px;
+    display: inline-block;
+    width: 25%;
+    margin: 1%;
+    background-color: #5a7499;
+    padding: 20px;
+    vertical-align: top;
+}
+
+.title{
+    color: white;
+    font-family: Roboto;
+    font-weight: bolder;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}

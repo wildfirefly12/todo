@@ -1,8 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import Category from "./Category";
-import AddTask from "./AddTask";
+import Category from "./components/Category";
+import AddTask from "./components/AddTask";
 import React, {useState} from "react";
+import AddItems from "./components/AddItems";
 
 function App() {
   var dummyCategories = [
@@ -39,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <AddTask onAddTask={addTaskHandler} categories={categories}/>
+      <AddItems categories={categories} onAddTask={addTaskHandler} onAddCategory={addCategoryHandler}/>
       {categories.map(category =>
         <Category key={category.id} title={category.name} tasks={tasks}/>
       )}

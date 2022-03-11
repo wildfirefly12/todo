@@ -15,7 +15,7 @@ const Category = (props) => {
 
     return (
         <div className={"category"}>
-            <h2>{props.title}</h2>
+            <h2 className={"title"}>{props.title}</h2>
             {props.tasks.map(task =>
                 showTask(task, props.title)
             )}

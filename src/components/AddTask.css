@@ -1,0 +1,43 @@
+.addTask {
+    width: 50%;
+    background-color: #edb5bf;
+    display: block;
+    margin: auto;
+    padding: 10px;
+    border: whitesmoke solid 3px;
+    border-radius: 15px;
+}
+
+.addTaskTitle{
+    color: white;
+    font-family: Roboto;
+    font-weight: bolder;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.field {
+    display: inline-block;
+    height: 35px;
+    width: 50%;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1.4em;
+    padding: 3px;
+}
+
+.taskButton {
+    display: inline-block;
+    height: 50px;
+    width: 50%;
+    border-radius: 5px;
+    font-size: 1.6em;
+    margin: 15px;
+    background-color: #5a7499;
+    color: whitesmoke;
+    font-family: Roboto;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}

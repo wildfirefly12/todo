@@ -30,14 +30,18 @@ const Category = (props) => {
                 <EditCategory onCategoryEdit={props.onCategoryEdit} category={props.category} setEditState={setEditState}/>
             )
         }
-        return "";
+        return (
+            <div>
+                <h2 className={"title"}>{props.name}</h2>
+                <button onClick={deleteCategoryHandler.bind(this, props.name)}>Delete</button>
+                <button onClick={setEditState}>Edit</button>
+            </div>
+        );
     }
 
     return (
         <div className={"category"}>
-            <h2 className={"title"}>{props.name}</h2>
-            <button onClick={deleteCategoryHandler.bind(this, props.name)}>Delete</button>
-            <button onClick={setEditState}>Edit</button>
+
             {showEdit()}
             {props.tasks.map(task =>
                 showTask(task, props.name)

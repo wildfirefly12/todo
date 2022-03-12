@@ -8,23 +8,21 @@ const Category = (props) => {
     const showTask = (task, category) => {
         if(task.category === category){
             return (
-                <Task key={task.id} title={task.title} description={task.description} />
+                <Task key={task.id} title={task.title} description={task.description} onTaskDelete={props.onTaskDelete}/>
             )
         }
     }
 
-    const deleteCategoryHandler = (event) => {
-        var name = event.target.value;
-        event.preventDefault();
+    const deleteCategoryHandler = (name) => {
         props.onCategoryDelete(name);
     }
 
     return (
         <div className={"category"}>
             <h2 className={"title"}>{props.name}</h2>
-            <button onClick={deleteCategoryHandler} value={props.name}>Delete</button>
+            <button onClick={deleteCategoryHandler.bind(this, props.name)}>Delete</button>
             {props.tasks.map(task =>
-                showTask(task, props.title)
+                showTask(task, props.name)
             )}
         </div>
     )

@@ -28,14 +28,9 @@ function App() {
   }
 
   const deleteCategoryHandler = (name) => {
-    console.log(name);
-    for(var i = 0; i < categories.length; i++){
-      if(categories[i].name === name){
-        delete categories[i];
-      }
-    }
-  }
+    setCategories(categories.filter(c => c.name !== name));
 
+  }
 
   const [tasks, setTasks] = useState(dummyTasks);
 
@@ -45,11 +40,16 @@ function App() {
     })
   }
 
+  const deleteTaskHandler = (title) => {
+    setTasks(tasks.filter(t => t.title !== title));
+
+  }
+
   return (
     <div className="App">
       <AddItems categories={categories} onAddTask={addTaskHandler} onAddCategory={addCategoryHandler}/>
       {categories.map(category =>
-        <Category key={category.id} name={category.name} tasks={tasks} onCategoryDelete={deleteCategoryHandler}/>
+        <Category key={category.id} name={category.name} tasks={tasks} onCategoryDelete={deleteCategoryHandler} onTaskDelete={deleteTaskHandler}/>
       )}
     </div>
   );

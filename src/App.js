@@ -1,5 +1,5 @@
 import './App.css';
-import Category from "./components/Category";
+import Category from "./components/category/Category";
 import React, {useState} from "react";
 import AddItems from "./components/AddItems";
 
@@ -32,6 +32,24 @@ function App() {
 
   }
 
+  const editCategoryHandler = (prevName, category) => {
+    console.log(prevName);
+    setCategories(categories.filter(c => c.id !== category.id));
+
+    setCategories(prevCategories => {
+      return [category, ...prevCategories];
+    })
+
+    for(let i = 0; i < tasks.length; i++){
+      if(tasks[i].category === prevName) {
+        tasks[i].category = category.name;
+        editTaskHandler(tasks[i]);
+        console.log(tasks[i]);
+      }
+    }
+
+  }
+
   const [tasks, setTasks] = useState(dummyTasks);
 
   const addTaskHandler = task => {
@@ -45,11 +63,20 @@ function App() {
 
   }
 
+  const editTaskHandler = (task) => {
+    console.log(task);
+    setTasks(tasks.filter(t => t.id !== task.id));
+
+    setTasks(prevTasks => {
+      return [task, ...prevTasks];
+    })
+  }
+
   return (
     <div className="App">
       <AddItems categories={categories} onAddTask={addTaskHandler} onAddCategory={addCategoryHandler}/>
       {categories.map(category =>
-        <Category key={category.id} name={category.name} tasks={tasks} onCategoryDelete={deleteCategoryHandler} onTaskDelete={deleteTaskHandler}/>
+        <Category key={category.id} name={category.name} tasks={tasks} onCategoryDelete={deleteCategoryHandler} onTaskDelete={deleteTaskHandler} category={category} onCategoryEdit={editCategoryHandler}/>
       )}
     </div>
   );

@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import "./AddItems.css";
 
 import AddTask from "./AddTask";
-import AddCategory from "./AddCategory";
+import AddCategory from "./category/AddCategory";
 
 const AddItems = (props) => {
 
@@ -18,18 +18,18 @@ const AddItems = (props) => {
             case "none":
                 return (
                     <div>
-                        <button className={"button"} onClick={handleState} value={"Add Category"}>Add Category</button>
+                        <button className={"button"} onClick={handleState} value={"Add category"}>Add Category</button>
                         <button className={"button"} onClick={handleState} value={"Add Task"}>Add Task</button>
                     </div>
                 );
-            case "Add Category":
+            case "Add category":
                 return <AddCategory onAddCategory={props.onAddCategory} handleState={handleState}/>;
             case "Add Task":
                 return <AddTask onAddTask={props.onAddTask} categories={props.categories} handleState={handleState}/>;
             default:
                return (
                    <div>
-                       <button className={"button"} onClick={handleState} value={"Add Category"}>Add Category</button>
+                       <button className={"button"} onClick={handleState} value={"Add category"}>Add Category</button>
                        <button className={"button"} onClick={handleState} value={"Add Task"}>Add Task</button>
                    </div>
                );

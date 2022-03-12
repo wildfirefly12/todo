@@ -6,7 +6,7 @@ const AddTask = (props) => {
 
     const [enteredTitle, setEnteredTitle] = useState("");
     const [enteredDescription, setEnteredDescription] = useState("");
-    const [enteredCategory, setEnteredCategory] = useState();
+    const [enteredCategory, setEnteredCategory] = useState("");
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
@@ -30,7 +30,11 @@ const AddTask = (props) => {
             category: enteredCategory
         }
 
-        props.onAddTask(task);
+        if(enteredCategory === ""){
+            alert("Please select a category!");
+        } else {
+            props.onAddTask(task);
+        }
     }
 
     return (
@@ -40,7 +44,7 @@ const AddTask = (props) => {
                 <input className={"field"} type={"text"} onChange={titleChangeHandler} value={enteredTitle}/>
                 <input className={"field"} type={"text"} onChange={descriptionChangeHandler} value={enteredDescription}/>
                 <select className={"field"} onChange={categoryChangeHandler}>
-                    <option>Select Category</option>
+                    <option value={""}>Select Category</option>
                     {props.categories.map(category =>
                         <option key={category.id} value={category.name}>{category.name}</option>
                     )}

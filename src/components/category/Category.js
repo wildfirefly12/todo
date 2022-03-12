@@ -9,7 +9,7 @@ const Category = (props) => {
     const showTask = (task, category) => {
         if(task.category === category){
             return (
-                <Task key={task.id} title={task.title} description={task.description} onTaskDelete={props.onTaskDelete}/>
+                <Task key={task.id} task={task} onTaskDelete={props.onTaskDelete} onTaskEdit={props.onTaskEdit}/>
             )
         }
     }

@@ -76,7 +76,7 @@ function App() {
     <div className="App">
       <AddItems categories={categories} onAddTask={addTaskHandler} onAddCategory={addCategoryHandler}/>
       {categories.map(category =>
-        <Category key={category.id} name={category.name} tasks={tasks} onCategoryDelete={deleteCategoryHandler} onTaskDelete={deleteTaskHandler} category={category} onCategoryEdit={editCategoryHandler}/>
+        <Category key={category.id} name={category.name} tasks={tasks} onCategoryDelete={deleteCategoryHandler} onTaskDelete={deleteTaskHandler} category={category} onCategoryEdit={editCategoryHandler} onTaskEdit={editTaskHandler}/>
       )}
     </div>
   );

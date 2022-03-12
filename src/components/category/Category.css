@@ -1,16 +1,15 @@
 .category{
-    border: whitesmoke solid 3px;
     border-radius: 25px;
     display: inline-block;
     width: 25%;
     margin: 1%;
-    background-color: #5a7499;
+    background-color: #e1f2ee;
     padding: 20px;
     vertical-align: top;
 }
 
 .title{
-    color: white;
+    color: #1d243c;
     font-family: Roboto;
     font-weight: bolder;
     font-size: 2em;

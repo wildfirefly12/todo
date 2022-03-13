@@ -2,6 +2,7 @@ import './App.css';
 import Category from "./components/category/Category";
 import React, {useState} from "react";
 import AddTask from "./components/AddTask";
+import Header from "./components/Header";
 
 function App() {
   var dummyCategories = [
@@ -43,7 +44,6 @@ function App() {
       if(tasks[i].category === prevName) {
         tasks[i].category = category.name;
         editTaskHandler(tasks[i]);
-        console.log(tasks[i]);
       }
     }
 
@@ -94,6 +94,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header/>
       {showAdd()}
       {categories.map(category =>
         <Category

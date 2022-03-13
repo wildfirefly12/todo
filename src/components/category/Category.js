@@ -42,9 +42,9 @@ const Category = (props) => {
             <div>
                 <p className={"taskCounter"}>{countTasks()}</p>
                 <h2 className={"title"}>{props.category.name}</h2>
-                <button className={"deleteCategoryButton"} onClick={deleteCategoryHandler.bind(this, props.category.name)}><img src={trash} alt={'delete'}/></button>
-                <button className={"editCategoryButton"} onClick={setEditState}><img src={edit} alt={'edit'}/></button>
-                <button className={"addTaskButton"} onClick={props.setAddingState.bind(this, props.category.name)}><img src={add} alt={'add'}/></button>
+                <button className={"deleteCategoryButton"} onClick={deleteCategoryHandler.bind(this, props.category.name)}><img className={"categoryBtnImg"} src={trash} alt={'delete'}/></button>
+                <button className={"editCategoryButton"} onClick={setEditState}><img className={"categoryBtnImg"} src={edit} alt={'edit'}/></button>
+                <button className={"addTaskButton"} onClick={props.setAddingState.bind(this, props.category.name)}><img className={"categoryBtnImg"} src={add} alt={'add'}/></button>
             </div>
         );
     }

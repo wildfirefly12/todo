@@ -1,0 +1,20 @@
+.search{
+    display: flex;
+    flex-flow: row;
+}
+
+.searchField{
+    border: transparent;
+    border-radius: 5px;
+    box-shadow: 2px 1px 2px gray;
+    padding: 5px;
+    margin: 5px;
+    width: 300px;
+}
+
+.searchButton{
+    cursor: pointer;
+    box-shadow: 2px 1px 2px gray;
+    padding: 5px;
+    margin: 5px;
+}

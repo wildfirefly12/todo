@@ -1,15 +1,21 @@
 .addTask {
-    width: 50%;
-    background-color: #edb5bf;
-    display: block;
+    width: 40%;
+    height: 600px;
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
     margin: auto;
     padding: 10px;
-    border: whitesmoke solid 3px;
-    border-radius: 15px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    box-shadow: 2px 2px 10px gray;
+    z-index: 1;
 }
 
 .addTaskTitle{
-    color: white;
+    color: #1d243c;
     font-family: Roboto;
     font-weight: bolder;
     font-size: 2em;
@@ -17,15 +23,27 @@
     letter-spacing: 3px;
 }
 
-.field {
+.inputTitle {
     display: inline-block;
     height: 35px;
-    width: 50%;
+    width: 80%;
     margin: 10px;
     border-radius: 5px;
     font-size: 1.4em;
     padding: 3px;
 }
+
+.inputDescription {
+    display: inline-block;
+    height: 200px;
+    width: 80%;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1.4em;
+    padding: 3px;
+    resize: none;
+}
+
 
 .taskButton {
     display: inline-block;

@@ -6,7 +6,7 @@ const AddTask = (props) => {
 
     const [enteredTitle, setEnteredTitle] = useState("");
     const [enteredDescription, setEnteredDescription] = useState("");
-    const [enteredCategory, setEnteredCategory] = useState("");
+/*    const [enteredCategory, setEnteredCategory] = useState("");*/
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
@@ -16,41 +16,31 @@ const AddTask = (props) => {
         setEnteredDescription(event.target.value);
     }
 
-    const categoryChangeHandler = (event) => {
+/*    const categoryChangeHandler = (event) => {
         setEnteredCategory(event.target.value);
-    }
+    }*/
 
     const handleAddTask = (event) => {
-        event.preventDefault();
 
         const task = {
             id: Math.random().toString(),
             title: enteredTitle,
             description: enteredDescription,
-            category: enteredCategory
+            category: props.category
         }
 
-        if(enteredCategory === ""){
-            alert("Please select a category!");
-        } else {
-            props.onAddTask(task);
-        }
+        props.onAddTask(task);
+        props.setAddingState(props.category);
     }
 
     return (
         <div className={"addTask"}>
             <p className={"addTaskTitle"}>Add a task</p>
             <form onSubmit={handleAddTask}>
-                <input className={"field"} type={"text"} onChange={titleChangeHandler} value={enteredTitle}/>
-                <input className={"field"} type={"text"} onChange={descriptionChangeHandler} value={enteredDescription}/>
-                <select className={"field"} onChange={categoryChangeHandler}>
-                    <option value={""}>Select Category</option>
-                    {props.categories.map(category =>
-                        <option key={category.id} value={category.name}>{category.name}</option>
-                    )}
-                </select>
-                <button className={"taskButton"} type={"submit"} >Add</button>
-                <button className={"taskButton"} value={"none"} onClick={props.handleState}>Cancel</button>
+                <input className={"inputTitle"} type={"text"} onChange={titleChangeHandler} value={enteredTitle}/>
+                <textarea className={"inputDescription"} type={"text"} onChange={descriptionChangeHandler} value={enteredDescription}/>
+                <button className={"taskButton"} type={"submit"}>Add</button>
+                <button className={"taskButton"} value={"none"} onClick={props.setAddingState}>Cancel</button>
             </form>
         </div>
     )

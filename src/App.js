@@ -1,13 +1,13 @@
 import './App.css';
 import Category from "./components/category/Category";
 import React, {useState} from "react";
-import AddItems from "./components/AddItems";
+import AddTask from "./components/AddTask";
 
 function App() {
   var dummyCategories = [
-    {id: 1, name: "Home"},
-    {id: 2, name: "Work"},
-    {id: 3, name: "School"},
+    {id: 1, name: "Home", taskCount: 0},
+    {id: 2, name: "Work", taskCount: 0},
+    {id: 3, name: "School", taskCount: 1},
   ]
 
   var dummyTasks = [
@@ -33,7 +33,6 @@ function App() {
   }
 
   const editCategoryHandler = (prevName, category) => {
-    console.log(prevName);
     setCategories(categories.filter(c => c.id !== category.id));
 
     setCategories(prevCategories => {
@@ -52,15 +51,15 @@ function App() {
 
   const [tasks, setTasks] = useState(dummyTasks);
 
-  const addTaskHandler = task => {
+  const addTaskHandler = (task) => {
     setTasks(prevTasks => {
       return [task, ...prevTasks];
     })
   }
 
-  const deleteTaskHandler = (title) => {
-    setTasks(tasks.filter(t => t.title !== title));
-
+  const deleteTaskHandler = (task) => {
+    setTasks(tasks.filter(t => t !== task));
+    console.log(tasks)
   }
 
   const editTaskHandler = (task) => {
@@ -72,11 +71,41 @@ function App() {
     })
   }
 
+  const [adding, setAdding] = useState(false);
+  const [category, setCategory] = useState("");
+
+  const setAddingState = (category) => {
+    setAdding(!adding);
+    setCategory(category);
+  }
+
+  const showAdd = () => {
+    if(adding){
+      return (
+          <div>
+            <div className={"addTaskOverlay"}></div>
+            <AddTask className={"addTaskWindow"} onAddTask={addTaskHandler} category={category} setAddingState={setAddingState}/>
+          </div>
+      );
+    } else {
+      return "";
+    }
+  }
+
   return (
     <div className="App">
-      <AddItems categories={categories} onAddTask={addTaskHandler} onAddCategory={addCategoryHandler}/>
+      {showAdd()}
       {categories.map(category =>
-        <Category key={category.id} name={category.name} tasks={tasks} onCategoryDelete={deleteCategoryHandler} onTaskDelete={deleteTaskHandler} category={category} onCategoryEdit={editCategoryHandler} onTaskEdit={editTaskHandler}/>
+        <Category
+            key={category.id}
+            category={category}
+            tasks={tasks}
+            onCategoryDelete={deleteCategoryHandler}
+            onTaskDelete={deleteTaskHandler}
+            onCategoryEdit={editCategoryHandler}
+            onTaskEdit={editTaskHandler}
+            setAddingState={setAddingState}
+        />
       )}
     </div>
   );

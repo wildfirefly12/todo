@@ -6,8 +6,8 @@ import edit from "../img/edit.png";
 
 const Task = (props) => {
 
-    const deleteTaskHandler = (title) => {
-        props.onTaskDelete(title);
+    const deleteTaskHandler = (task) => {
+        props.onTaskDelete(task);
     }
 
     const [editing, setEditing] = useState(false);
@@ -18,7 +18,6 @@ const Task = (props) => {
 
     const [enteredTitle, setEnteredTitle] = useState(props.task.title);
     const [enteredDescription, setEnteredDescription] = useState(props.task.description);
-    const [enteredCategory, setEnteredCategory] = useState();
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
@@ -26,10 +25,6 @@ const Task = (props) => {
 
     const descriptionChangeHandler = (event) => {
         setEnteredDescription(event.target.value);
-    }
-
-    const categoryChangeHandler = (event) => {
-        setEnteredCategory(event.target.value);
     }
 
     const handleEditTask = (event) => {
@@ -61,8 +56,8 @@ const Task = (props) => {
                 <div>
                     <h3 className={"taskTitle"}>{props.task.title}</h3>
                     <p className={"taskDescription"}>{props.task.description}</p>
-                    <button className={"deleteTaskButton"} onClick={deleteTaskHandler.bind(this, props.task.title)}><img src={trash} className={"deleteTaskImg"}/></button>
-                    <button className={"editTaskButton"} onClick={isEditing}><img src={edit} className={"editTaskImg"}/></button>
+                    <button className={"deleteTaskButton"} onClick={deleteTaskHandler.bind(this, props.task)}><img src={trash} alt={'delete'} className={"deleteTaskImg"}/></button>
+                    <button className={"editTaskButton"} onClick={isEditing}><img src={edit} className={"editTaskImg"} alt={'edit'}/></button>
                 </div>
             )
         }

@@ -3,6 +3,7 @@ import Category from "./components/category/Category";
 import React, {useState} from "react";
 import AddTask from "./components/AddTask";
 import Header from "./components/Header";
+import AddCategory from "./components/category/AddCategory";
 
 function App() {
   var dummyCategories = [
@@ -28,8 +29,8 @@ function App() {
     })
   }
 
-  const deleteCategoryHandler = (name) => {
-    setCategories(categories.filter(c => c.name !== name));
+  const deleteCategoryHandler = (category) => {
+    setCategories(categories.filter(c => c !== category));
 
   }
 
@@ -53,38 +54,36 @@ function App() {
 
   const addTaskHandler = (task) => {
     setTasks(prevTasks => {
-      return [task, ...prevTasks];
+      return [task, ...prevTasks]
     })
   }
 
   const deleteTaskHandler = (task) => {
     setTasks(tasks.filter(t => t !== task));
-    console.log(tasks)
   }
 
   const editTaskHandler = (task) => {
-    console.log(task);
     setTasks(tasks.filter(t => t.id !== task.id));
 
     setTasks(prevTasks => {
-      return [task, ...prevTasks];
-    })
+          return [task, ...prevTasks]
+        })
   }
 
-  const [adding, setAdding] = useState(false);
+  const [addingTask, setAddingTask] = useState(false);
   const [category, setCategory] = useState("");
 
-  const setAddingState = (category) => {
-    setAdding(!adding);
+  const setAddingTaskState = (category) => {
+    setAddingTask(!addingTask);
     setCategory(category);
   }
 
-  const showAdd = () => {
-    if(adding){
+  const showAddTask = () => {
+    if(addingTask){
       return (
           <div>
             <div className={"addTaskOverlay"}></div>
-            <AddTask className={"addTaskWindow"} onAddTask={addTaskHandler} category={category} setAddingState={setAddingState}/>
+            <AddTask className={"addTaskWindow"} onAddTask={addTaskHandler} category={category} setAddingState={setAddingTaskState} handleSearchTasks={handleSearchTasks}/>
           </div>
       );
     } else {
@@ -92,20 +91,51 @@ function App() {
     }
   }
 
+  const [addingCategory, setAddingCategory] = useState(false);
+
+  const setAddingCategoryState = () => {
+    setAddingCategory(!addingCategory);
+  }
+
+  const showAddCategory = () => {
+    if(addingCategory){
+      return (
+          <div>
+            <div className={"addTaskOverlay"}></div>
+            <AddCategory className={"addTaskWindow"} addCategoryHandler={addCategoryHandler} setAddingCategoryState={setAddingCategoryState}/>
+          </div>
+      );
+    } else {
+      return "";
+    }
+  }
+
+ const [filter, setFilter] = useState("");
+
+  const handleSearchTasks = (searchTerm) => {
+    setFilter(searchTerm);
+  }
+
+  const handleClearSearch = () => {
+    setFilter("");
+  }
+
   return (
     <div className="App">
-      <Header/>
-      {showAdd()}
+      <Header handleSearchTasks={handleSearchTasks} handleClearSearch={handleClearSearch} setAddingCategoryState={setAddingCategoryState}/>
+      {showAddTask()}
+      {showAddCategory()}
       {categories.map(category =>
         <Category
             key={category.id}
             category={category}
             tasks={tasks}
+            searchTerm={filter}
             onCategoryDelete={deleteCategoryHandler}
             onTaskDelete={deleteTaskHandler}
             onCategoryEdit={editCategoryHandler}
             onTaskEdit={editTaskHandler}
-            setAddingState={setAddingState}
+            setAddingState={setAddingTaskState}
         />
       )}
     </div>

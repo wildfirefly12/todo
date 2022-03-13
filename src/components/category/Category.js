@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 
 import "./Category.css";
 import Task from "../Task";
@@ -22,8 +22,8 @@ const Category = (props) => {
         }
     }
 
-    const deleteCategoryHandler = (name) => {
-        props.onCategoryDelete(name);
+    const deleteCategoryHandler = (category) => {
+        props.onCategoryDelete(category);
     }
 
     const [state, setState] = useState(false);
@@ -42,7 +42,7 @@ const Category = (props) => {
             <div>
                 <p className={"taskCounter"}>{countTasks()}</p>
                 <h2 className={"title"}>{props.category.name}</h2>
-                <button className={"deleteCategoryButton"} onClick={deleteCategoryHandler.bind(this, props.category.name)}><img className={"categoryBtnImg"} src={trash} alt={'delete'}/></button>
+                <button className={"deleteCategoryButton"} onClick={deleteCategoryHandler.bind(this, props.category)}><img className={"categoryBtnImg"} src={trash} alt={'delete'}/></button>
                 <button className={"editCategoryButton"} onClick={setEditState}><img className={"categoryBtnImg"} src={edit} alt={'edit'}/></button>
                 <button className={"addTaskButton"} onClick={props.setAddingState.bind(this, props.category.name)}><img className={"categoryBtnImg"} src={add} alt={'add'}/></button>
             </div>
@@ -52,7 +52,7 @@ const Category = (props) => {
     return (
         <div className={"category"}>
             {showEdit()}
-            {props.tasks.map(task =>
+            {props.tasks.filter(t => t.title.includes(props.searchTerm) || t.description.includes(props.searchTerm)).map(task =>
                 showTask(task, props.category.name)
             )}
         </div>

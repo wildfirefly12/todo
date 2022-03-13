@@ -18,7 +18,8 @@ const AddCategory = (props) => {
             name: enteredTitle
         }
 
-        props.onAddCategory(category);
+        props.addCategoryHandler(category);
+        props.setAddingCategoryState();
     }
 
     return (
@@ -27,7 +28,7 @@ const AddCategory = (props) => {
             <form onSubmit={handleAddCategory}>
                 <input className={"field"} type={"text"} onChange={titleChangeHandler} value={enteredTitle}/>
                 <button className={"categoryButton"} type={"submit"} >Add</button>
-                <button className={"categoryButton"} value={"none"} onClick={props.handleState}>Cancel</button>
+                <button className={"categoryButton"} value={"none"} onClick={props.setAddingCategoryState}>Cancel</button>
             </form>
         </div>
     )

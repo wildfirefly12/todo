@@ -1,1 +1,20 @@
+.addCategoryButton{
+    border: transparent;
+    background-color: transparent;
+    cursor: pointer;
+    position: absolute;
+    width: 40px;
+    top: 15px;
+    right: 85px;
+}
 
+.addCategoryBtnImg{
+    width: 40px;
+}
+
+.addCatBtnPrompt{
+    background-color: whitesmoke;
+    position: absolute;
+    top: 30px;
+    right: 130px;
+}

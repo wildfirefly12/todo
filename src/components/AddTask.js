@@ -6,7 +6,6 @@ const AddTask = (props) => {
 
     const [enteredTitle, setEnteredTitle] = useState("");
     const [enteredDescription, setEnteredDescription] = useState("");
-/*    const [enteredCategory, setEnteredCategory] = useState("");*/
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
@@ -16,11 +15,7 @@ const AddTask = (props) => {
         setEnteredDescription(event.target.value);
     }
 
-/*    const categoryChangeHandler = (event) => {
-        setEnteredCategory(event.target.value);
-    }*/
-
-    const handleAddTask = (event) => {
+    const handleAddTask = () => {
 
         const task = {
             id: Math.random().toString(),
@@ -30,6 +25,7 @@ const AddTask = (props) => {
         }
 
         props.onAddTask(task);
+        props.handleSearchTasks("");
         props.setAddingState(props.category);
     }
 

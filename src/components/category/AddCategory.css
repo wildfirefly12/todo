@@ -1,11 +1,17 @@
 .addCategory {
-    width: 50%;
-    background-color: #edb5bf;
-    display: block;
+    width: 40%;
+    height: 300px;
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
     margin: auto;
     padding: 10px;
-    border: whitesmoke solid 3px;
-    border-radius: 15px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    box-shadow: 2px 2px 10px gray;
+    z-index: 1;
 }
 
 .categoryTitle{

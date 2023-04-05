@@ -26,7 +26,7 @@ const AddCategory = (props) => {
         <div className={"addCategory"}>
             <p className={"categoryTitle"}>Add a category</p>
             <form onSubmit={handleAddCategory}>
-                <input className={"field"} type={"text"} onChange={titleChangeHandler} value={enteredTitle}/>
+                <input className={"inputCategory"} type={"text"} onChange={titleChangeHandler} value={enteredTitle}/>
                 <button className={"categoryButton"} type={"submit"} >Add</button>
                 <button className={"categoryButton"} value={"none"} onClick={props.setAddingCategoryState}>Cancel</button>
             </form>

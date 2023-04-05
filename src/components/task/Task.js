@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 
 import "./Task.css";
-import trash from "../img/delete.png";
-import edit from "../img/edit.png";
+import trash from "../../img/delete.png";
+import edit from "../../img/edit.png";
 
 const Task = (props) => {
 

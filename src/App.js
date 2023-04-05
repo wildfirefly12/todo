@@ -1,21 +1,22 @@
 import './App.css';
 import Category from "./components/category/Category";
 import React, {useState} from "react";
-import AddTask from "./components/AddTask";
+import AddTask from "./components/task/AddTask";
 import Header from "./components/Header";
 import AddCategory from "./components/category/AddCategory";
 
 function App() {
+
   var dummyCategories = [
-    {id: 1, name: "Home", taskCount: 0},
-    {id: 2, name: "Work", taskCount: 0},
-    {id: 3, name: "School", taskCount: 1},
+    {id: 1, name: "Home"},
+    {id: 2, name: "Work"},
+    {id: 3, name: "School"},
   ]
 
   var dummyTasks = [
     {
       id: 1,
-      category: "School",
+      categoryId: 3,
       title: "Homework",
       description: "Time to study"
     }
@@ -30,11 +31,14 @@ function App() {
   }
 
   const deleteCategoryHandler = (category) => {
-    setCategories(categories.filter(c => c !== category));
-
+    if(tasks.filter(t => t.categoryId == category.id).length <= 0){
+      setCategories(categories.filter(c => c !== category));
+    } else {
+      alert("Cannot delete a category with existing tasks.")
+    }
   }
 
-  const editCategoryHandler = (prevName, category) => {
+  const editCategoryHandler = (prevId, category) => {
     setCategories(categories.filter(c => c.id !== category.id));
 
     setCategories(prevCategories => {
@@ -42,8 +46,8 @@ function App() {
     })
 
     for(let i = 0; i < tasks.length; i++){
-      if(tasks[i].category === prevName) {
-        tasks[i].category = category.name;
+      if(tasks[i].categoryId === prevId) {
+        tasks[i].categoryId = category.id;
         editTaskHandler(tasks[i]);
       }
     }
@@ -71,7 +75,7 @@ function App() {
   }
 
   const [addingTask, setAddingTask] = useState(false);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState({});
 
   const setAddingTaskState = (category) => {
     setAddingTask(!addingTask);

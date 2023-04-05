@@ -1,21 +1,20 @@
 import React, {useState} from "react";
 
 import "./Category.css";
-import Task from "../Task";
+import Task from "../task/Task";
 import EditCategory from "./EditCategory";
 import trash from "../../img/delete.png";
 import edit from "../../img/edit.png";
 import add from "../../img/add.png";
 
-
 const Category = (props) => {
 
     const countTasks = () => {
-        return props.tasks.filter(t => t.category === props.category.name).length;
+        return props.tasks.filter(t => t.categoryId === props.category.id).length;
     }
 
-    const showTask = (task, category) => {
-        if(task.category === category){
+    const showTask = (task) => {
+        if(task.categoryId === props.category.id){
             return (
                 <Task key={task.id} task={task} onTaskDelete={props.onTaskDelete} onTaskEdit={props.onTaskEdit}/>
             )
@@ -44,7 +43,7 @@ const Category = (props) => {
                 <h2 className={"title"}>{props.category.name}</h2>
                 <button className={"deleteCategoryButton"} onClick={deleteCategoryHandler.bind(this, props.category)}><img className={"categoryBtnImg"} src={trash} alt={'delete'}/></button>
                 <button className={"editCategoryButton"} onClick={setEditState}><img className={"categoryBtnImg"} src={edit} alt={'edit'}/></button>
-                <button className={"addTaskButton"} onClick={props.setAddingState.bind(this, props.category.name)}><img className={"categoryBtnImg"} src={add} alt={'add'}/></button>
+                <button className={"addTaskButton"} onClick={props.setAddingState.bind(this, props.category)}><img className={"categoryBtnImg"} src={add} alt={'add'}/></button>
             </div>
         );
     }

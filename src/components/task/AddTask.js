@@ -21,7 +21,7 @@ const AddTask = (props) => {
             id: Math.random().toString(),
             title: enteredTitle,
             description: enteredDescription,
-            category: props.category
+            categoryId: props.category.id
         }
 
         props.onAddTask(task);

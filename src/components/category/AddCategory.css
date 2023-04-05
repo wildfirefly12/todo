@@ -7,7 +7,7 @@
     top: 0px;
     bottom: 0px;
     margin: auto;
-    padding: 10px;
+    padding: 10px 10px 40px 10px;
     border-radius: 10px;
     background-color: whitesmoke;
     box-shadow: 2px 2px 10px gray;
@@ -15,12 +15,22 @@
 }
 
 .categoryTitle{
-    color: white;
+    color: black;
     font-family: Roboto;
     font-weight: bolder;
     font-size: 2em;
     text-transform: uppercase;
     letter-spacing: 3px;
+}
+
+.inputCategory{
+    display: inline-block;
+    height: 35px;
+    width: 80%;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1.4em;
+    padding: 3px;
 }
 
 .categoryButton{
